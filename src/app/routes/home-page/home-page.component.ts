@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CategoryListGroupComponent } from '../../features/categories/components/category-list-group/category-list-group.component';
 import { ProductCardListComponent } from '../../features/products/components/product-card-list/product-card-list.component';
+import { ProductListItem } from '../../features/products/models/product-list-item';
 
 @Component({
   selector: 'app-home-page',
@@ -29,10 +30,12 @@ export class HomePageComponent implements OnInit {
   }
 
   getProductFiltersFromRoute() {
-    this.route.queryParams.subscribe((queryParams) => {
+    this.route.queryParams
+    .subscribe((queryParams) => {
       const categoryId = queryParams['categoryId'];
       if (categoryId) this.selectedCategoryId = Number(categoryId);
-    }).unsubscribe();
+    })
+    .unsubscribe();
   }
 
   onChangeCategorySelect(event: number | null) {
@@ -42,5 +45,9 @@ export class HomePageComponent implements OnInit {
       queryParams: { categoryId: this.selectedCategoryId },
       relativeTo: this.route,
     });
+  }
+
+  onViewProduct(product: ProductListItem) {
+    this.router.navigate(['products', 'detail', product.id]); // localhost:4200/products/detail/1
   }
 }
