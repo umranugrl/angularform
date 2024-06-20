@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   EventEmitter,
   Output,
 } from '@angular/core';
@@ -22,6 +23,7 @@ import {
 })
 
 export class CategoryListGroupComponent {
+  @Input() initialSelectedCategoryId?: number | null;
   @Output() changeSelect = new EventEmitter<number | null>();
   categoryList: CategoryListItem[] = [
     { id: 1, name: 'Beverages' },
