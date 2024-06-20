@@ -1,0 +1,15 @@
+<!-- Html Semantic Tags -->
+<div class="d-flex flex-column min-vh-100">
+    <header>
+        <app-navbar></app-navbar>
+    </header>
+    
+    <main class="container flex-grow-1 py-3">
+        <!-- ng-content: bu componenti kullandığımız yerde içerisine geçtiğimiz template'i buraya yerleştiriyor olacak -->
+        <ng-content></ng-content>
+    </main>
+    
+    <footer>
+        <app-footer></app-footer>
+    </footer>
+</div>
